@@ -1,0 +1,12 @@
+input:focus,
+      textarea:focus,
+      select:focus,
+      a:focus
+{
+    outline: none;
+}
+
+.right
+{
+    float: right;
+}

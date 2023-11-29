@@ -1,0 +1,52 @@
+# SeqSharp
+
+Visual Studio 2022 callstacks to sequence diagram converter.
+
+Written in F# and converted to JavaScript using [Fable](https://fable.io/) to play with it online.
+
+**Try online:**
+
+https://xiety.github.io/SeqSharp
+
+To create this:
+
+![Output](/docs/callstack.svg)
+
+From this:
+
+```
+>	SeqSharp.dll!Callstack.parseItem(System.Text.RegularExpressions.Match m) Line 41	F#
+ 	SeqSharp.dll!Callstack.regex@45.Invoke(string s) Line 49	F#
+ 	FSharp.Core.dll!Microsoft.FSharp.Primitives.Basics.List.choose<string, Callstack.CallstackItemFlat>(Microsoft.FSharp.Core.FSharpFunc<string, Microsoft.FSharp.Core.FSharpOption<Callstack.CallstackItemFlat>> f, Microsoft.FSharp.Collections.FSharpList<string> xs) Line 188	F#
+ 	FSharp.Core.dll!Microsoft.FSharp.Collections.ListModule.Choose<string, Callstack.CallstackItemFlat>(Microsoft.FSharp.Core.FSharpFunc<string, Microsoft.FSharp.Core.FSharpOption<Callstack.CallstackItemFlat>> chooser, Microsoft.FSharp.Collections.FSharpList<string> list) Line 206	F#
+ 	SeqSharp.dll!Callstack.parse(Microsoft.FSharp.Collections.FSharpList<string> items) Line 55	F#
+ 	SeqSharp.dll!Callstack.Pipe #1 stage #5 at line 99@99.Invoke(Microsoft.FSharp.Collections.FSharpList<string> items)	Unknown
+ 	FSharp.Core.dll!Microsoft.FSharp.Primitives.Basics.List.map<Microsoft.FSharp.Collections.FSharpList<string>, Microsoft.FSharp.Collections.FSharpList<Callstack.CallstackItemFlat>>(Microsoft.FSharp.Core.FSharpFunc<Microsoft.FSharp.Collections.FSharpList<string>, Microsoft.FSharp.Collections.FSharpList<Callstack.CallstackItemFlat>> mapping, Microsoft.FSharp.Collections.FSharpList<Microsoft.FSharp.Collections.FSharpList<string>> x) Line 245	F#
+ 	FSharp.Core.dll!Microsoft.FSharp.Collections.ListModule.Map<Microsoft.FSharp.Collections.FSharpList<string>, Microsoft.FSharp.Collections.FSharpList<Callstack.CallstackItemFlat>>(Microsoft.FSharp.Core.FSharpFunc<Microsoft.FSharp.Collections.FSharpList<string>, Microsoft.FSharp.Collections.FSharpList<Callstack.CallstackItemFlat>> mapping, Microsoft.FSharp.Collections.FSharpList<Microsoft.FSharp.Collections.FSharpList<string>> list) Line 97	F#
+ 	SeqSharp.dll!Callstack.parseCallstack(string[] lines) Line 99	F#
+ 	SeqSharp.dll!Program.convert_lines(string[] input) Line 9	F#
+ 	SeqSharp.dll!Program.main(string[] _arg1) Line 25	F#
+
+>	SeqSharp.dll!Diagram.makeActivation(int activationSize, Diagram.Options options, Microsoft.FSharp.Collections.FSharpList<Diagram.VisualElement> list) Line 52	F#
+ 	SeqSharp.dll!Diagram.activationWithMessage(Diagram.Options options, Microsoft.FSharp.Collections.FSharpList<Diagram.VisualElement> list) Line 86	F#
+ 	SeqSharp.dll!Diagram.draw(Diagram.Options options, Microsoft.FSharp.Collections.FSharpList<Diagram.VisualElement> list) Line 98	F#
+ 	SeqSharp.dll!Diagram.drawDiagram(Callstack.CallstackItem callstack) Line 113	F#
+ 	SeqSharp.dll!Program.convert_lines(string[] input) Line 10	F#
+ 	SeqSharp.dll!Program.main(string[] _arg1) Line 25	F#
+
+>	SeqSharp.dll!Sort.calculate'@7.Invoke(Microsoft.FSharp.Collections.FSharpList<Diagram.VisualElement> list, int size, int num) Line 7	F#
+ 	SeqSharp.dll!Sort.calculate(Microsoft.FSharp.Collections.FSharpList<Diagram.VisualElement> diagram, Diagram.VisualLifeLine lifeLine) Line 17	F#
+ 	SeqSharp.dll!Sort.infos@21.Invoke(Diagram.VisualElement _arg2) Line 21	F#
+ 	FSharp.Core.dll!Microsoft.FSharp.Primitives.Basics.List.choose<Diagram.VisualElement, System.Tuple<Diagram.VisualLifeLine, System.Tuple<int, int>>>(Microsoft.FSharp.Core.FSharpFunc<Diagram.VisualElement, Microsoft.FSharp.Core.FSharpOption<System.Tuple<Diagram.VisualLifeLine, System.Tuple<int, int>>>> f, Microsoft.FSharp.Collections.FSharpList<Diagram.VisualElement> xs) Line 188	F#
+ 	FSharp.Core.dll!Microsoft.FSharp.Collections.ListModule.Choose<Diagram.VisualElement, System.Tuple<Diagram.VisualLifeLine, System.Tuple<int, int>>>(Microsoft.FSharp.Core.FSharpFunc<Diagram.VisualElement, Microsoft.FSharp.Core.FSharpOption<System.Tuple<Diagram.VisualLifeLine, System.Tuple<int, int>>>> chooser, Microsoft.FSharp.Collections.FSharpList<Diagram.VisualElement> list) Line 206	F#
+ 	SeqSharp.dll!Sort.sortDiagram(Microsoft.FSharp.Collections.FSharpList<Diagram.VisualElement> diagram) Line 21	F#
+ 	SeqSharp.dll!Program.convert_lines(string[] input) Line 11	F#
+ 	SeqSharp.dll!Program.main(string[] _arg1) Line 25	F#
+
+>	SeqSharp.dll!Render.renderLifeLine(Diagram.VisualLifeLine lifeLine, Render.RenderState state) Line 36	F#
+ 	SeqSharp.dll!Render.renderElement(Diagram.VisualElement el, Render.RenderState state) Line 116	F#
+ 	SeqSharp.dll!Render.render(Microsoft.FSharp.Collections.FSharpList<Diagram.VisualElement> input, Render.RenderState state) Line 122	F#
+ 	SeqSharp.dll!Render.renderSvg(Microsoft.FSharp.Collections.FSharpList<Diagram.VisualElement> input) Line 126	F#
+ 	SeqSharp.dll!Program.convert_lines(string[] input) Line 12	F#
+ 	SeqSharp.dll!Program.main(string[] _arg1) Line 25	F#
+```

@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="Utils.fs" />
+    <Compile Include="Callstack.fs" />
+    <Compile Include="Diagram.fs" />
+    <Compile Include="Sort.fs" />
+    <Compile Include="Svg.fs" />
+    <Compile Include="Render.fs" />
+    <Compile Include="Program.fs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Fable.Core" Version="4.2.0" />
+  </ItemGroup>
+
+</Project>
